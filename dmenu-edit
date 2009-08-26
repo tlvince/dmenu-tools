@@ -1,0 +1,87 @@
+#!/bin/sh
+# Title:    dmenu-edit
+# Author:   Tom Vincent
+# Created:  0.1.0 (2009-08-04)
+#
+# Use dmenu to search a edit frequently updated dotfiles.
+#
+# Influenced by: http://bbs.archlinux.org/viewtopic.php?pid=433877#p433877
+
+NAME=dmenu-edit
+VERSION=0.1.1
+ARGS=$@
+
+##
+# The programs usage options
+#
+usage()
+{
+    version
+    cat << EOF
+
+Usage:
+  $NAME [OPTION...] [FILES...]
+
+Program arguments:
+  -v, --version        Output version information and exit
+  -e, --editor         Explicitly set the editor to use
+
+EOF
+}
+
+##
+# Output the current version
+#
+version()
+{
+    echo "$NAME v$VERSION"
+}
+
+##
+# Remove the leading "~/"
+#
+cleanName()
+{
+    cat $ARGS | while read LINE; do
+        echo "$LINE" | awk '{gsub (/~\//, ""); print}'
+    done
+}
+
+##
+# Open up the item in an editor.
+#
+launchEditor()
+{
+    # Check to see if you have escaped dmenu
+    CHOICE=$(cleanName | dmenu)
+    if [ "$CHOICE" != "" ]; then
+        $EDITOR ~/$CHOICE
+    fi
+}
+
+##
+# Main function.
+#
+case $1 in
+    --version|-v)
+        version
+    ;;
+    --help|-h)
+        usage
+    ;;
+    --editor|-e)
+        # Note, could be set by unexporting the $EDITOR variable before launch
+        # TODO: can this be moved to a function?
+        EDITOR=$2
+        shift 2
+        ARGS="$@"
+        launchEditor
+    ;;
+    *)
+        if [ $# != 0 ]; then
+            launchEditor
+        else
+            usage
+        fi
+    ;;
+esac
