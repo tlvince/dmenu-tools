@@ -1,0 +1,23 @@
+#!/bin/sh
+# Title:    dmenu-recent
+# Author:   Tom Vincent
+# Version:  0.1.2 (2009-04-05)
+#
+# Original Author:  b3n
+# Source:           http://bbs.archlinux.org/viewtopic.php?pid=529204#p529204
+#
+# Sort dmenu items by usage. Append ";" to launch the app in terminal.
+
+TERMI="urxvtc -e"
+CACHE="$HOME/.dmenu_cache_recent"
+
+touch $CACHE
+MOST_USED=`sort $CACHE | uniq -c | sort -r | colrm 1 8`
+RUN=`(echo "$MOST_USED"; dmenu_path | grep -vxF "$MOST_USED") | dmenu` &&
+(echo $RUN; head -n 99 $CACHE) > $CACHE.$$ &&
+mv $CACHE.$$ $CACHE
+
+case $RUN in
+    *\;) exec `echo $TERMI $RUN | sed -e 's/;$//'`;;
+    *)   exec $RUN;;
+esac
