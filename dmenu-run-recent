@@ -9,7 +9,7 @@
 # Sort dmenu items by usage. Append ";" to launch the app in terminal.
 
 TERMI="urxvtc -e"
-CACHE="$HOME/.dmenu_cache_recent"
+CACHE="$HOME/tmp/.dmenu_cache_recent"
 
 touch $CACHE
 MOST_USED=`sort $CACHE | uniq -c | sort -r | colrm 1 8`
