@@ -1,7 +1,7 @@
 #!/bin/sh
 # Title:    dmenu-menu
 # Author:   Tom Vincent
-# Version:  0.1.1 (2009-08-09)
+# Created:  2009-08-05
 #
 # A recursive dmenu menu.
 #
@@ -9,24 +9,30 @@
 #
 # TODO:
 # * Clean the dmenu display name -- see if gsub can use $WD instead
-# * Work out how to do ranges with find (negation)
-# * Cache the dmenu scripts?
-#
-# Changelog:
-# v0.1.0 - (2009-08-05)
-#        * First build
 
-WD=$HOME/bin
-SCRIPTS=$(find $WD -name "dmenu*" ! -name "dmenu" ! -name "dmenu-menu")
+WD=$(dirname $0)
+BASENAME=$(basename $0)
+HIDE="$BASENAME|dmenu-path"
+
+##
+# Find the installed modules
+#
+findModules()
+{
+    find $WD -name "dmenu*" ! -name dmenu | grep -Ev "($HIDE)"
+}
 
 ##
 # Remove the leading "/home/tom/bin/"
 #
 cleanName()
 {
-    echo "$SCRIPTS" | while read LINE; do
+    findModules | while read LINE; do
         echo "$LINE" | awk '{gsub (/\/home\/tom\/bin\//, ""); print}'
     done
 }
 
+##
+# Main function.
+#
 exec $(cleanName | dmenu)
