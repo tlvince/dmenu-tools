@@ -1,5 +1,5 @@
 #!/bin/sh
-CACHE=$HOME/tmp/.dmenu_cache
+CACHE=$HOME/.cache/dmenu-cache
 IFS=:
 
 uptodate() {
