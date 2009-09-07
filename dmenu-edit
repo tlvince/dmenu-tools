@@ -10,17 +10,18 @@
 NAME=dmenu-edit
 VERSION=0.1.1
 ARGS=$@
+DEFAULT_FILE="$HOME/src/bash/rsync/dotfiles"
 
 ##
 # The programs usage options
 #
 usage()
 {
-    version
     cat << EOF
 
 Usage:
   $NAME [OPTION...] [FILES...]
+  $NAME           Implicitly open the default file (if set)
 
 Program arguments:
   -v, --version        Output version information and exit
@@ -81,7 +82,12 @@ case $1 in
         if [ $# != 0 ]; then
             launchEditor
         else
-            usage
+            if [[ $DEFAULT_FILE ]]; then
+                ARGS=$DEFAULT_FILE
+                launchEditor
+            else
+                usage
+            fi
         fi
     ;;
 esac
