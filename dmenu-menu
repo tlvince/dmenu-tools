@@ -6,33 +6,31 @@
 # A recursive dmenu menu.
 #
 # Influenced by: http://crunchbanglinux.org/forums/topic/3170/recursive-dmenu/
-#
-# TODO:
-# * Clean the dmenu display name -- see if gsub can use $WD instead
 
 WD=$(dirname $0)
 BASENAME=$(basename $0)
 HIDE="$BASENAME|dmenu-path"
 
-##
+#
 # Find the installed modules
 #
 findModules()
 {
-    find $WD -name "dmenu*" ! -name dmenu | grep -Ev "($HIDE)"
+    find $WD -maxdepth 1 -name "dmenu*" ! -name dmenu | grep -Ev "($HIDE)"
 }
 
-##
-# Remove the leading "/home/tom/bin/"
+#
+# Remove the leading directory path.
+# Note: will only work if the modules are in the $WD
 #
 cleanName()
 {
     findModules | while read LINE; do
-        echo "$LINE" | awk '{gsub (/\/home\/tom\/bin\//, ""); print}'
+        echo "$LINE" | sed 's/.*\///g'
     done
 }
 
-##
+#
 # Main function.
 #
 exec $(cleanName | dmenu)
