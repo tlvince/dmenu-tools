@@ -10,7 +10,8 @@
 NAME=dmenu-edit
 VERSION=0.1.1
 ARGS=$@
-DEFAULT_FILE="$HOME/src/bash/rsync/dotfiles"
+DEFAULT_FILE="$HOME/src/bash/backup/trunk/dotfiles"
+TERM="urxvtc -e"
 
 ##
 # The programs usage options
@@ -56,7 +57,7 @@ launchEditor()
     # Check to see if you have escaped dmenu
     CHOICE=$(cleanName | dmenu)
     if [ "$CHOICE" != "" ]; then
-        $EDITOR ~/$CHOICE
+        $TERM $EDITOR ~/$CHOICE
     fi
 }
 
