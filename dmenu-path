@@ -1,5 +1,5 @@
 #!/bin/sh
-CACHE=$HOME/.cache/dmenu-cache
+CACHE="${XDG_CACHE_HOME:-"$HOME/.cache"}/dmenu-cache"
 IFS=:
 
 uptodate() {
