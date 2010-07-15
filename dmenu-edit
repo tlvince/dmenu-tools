@@ -8,7 +8,7 @@
 # Influenced by: http://bbs.archlinux.org/viewtopic.php?pid=433877#p433877
 
 NAME="dmenu-edit"
-VERSION="0.1.2"
+VERSION="0.1.5"
 ARGS="$@"
 DEFAULT_FILE="$HOME/src/bash/backup/trunk/dotfiles"
 TERM="urxvtc -e"
