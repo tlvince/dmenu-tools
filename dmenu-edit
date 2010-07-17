@@ -10,7 +10,7 @@
 NAME="dmenu-edit"
 VERSION="0.1.5"
 ARGS="$@"
-DEFAULT_FILE="$HOME/src/bash/backup/trunk/dotfiles"
+DEFAULT_FILE="$HOME/src/bash/backup/dotfiles"
 TERM="urxvtc -e"
 
 ##
