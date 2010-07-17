@@ -1,0 +1,6 @@
+dmenu-tools
+===========
+
+`dmenu-tools` is a collection of scripts powered by [dmenu][].
+
+  [dmenu]: http://tools.suckless.org/dmenu/ "dmenu homepage"
