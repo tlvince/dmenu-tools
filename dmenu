@@ -2,8 +2,17 @@
 #
 # Specify some defaults for dmenu.
 #
-# If programs want to override this, make sure they use the full path to dmenu
-# (usr/bin/dmenu).
+# If programs want to override this, make sure they use the full path to dmenu.
+
+# Imports:
+. "$HOME/proj/src/bash/lib/realBin.sh"
+
+
+DMENU=$(realBin dmenu)
+if [[ $? -gt 0 ]]; then
+    echo "dmenu binary cannot be found. Have you installed dmenu?"
+    exit 1
+fi
 
 # Colours:
 NORM_BG="#101010"
@@ -11,4 +20,5 @@ NORM_FG="#777777"
 SELC_BG="#000000"
 SELC_FG="#ffffff"
 FONT="-*-terminus-medium-r-*-*-*-*-*-*-*-*-*-*"
-/usr/bin/dmenu -i -nb $NORM_BG -nf $NORM_FG -sb $SELC_BG -sf $SELC_FG -fn $FONT ${1+"$@"}
+
+$DMENU -i -nb $NORM_BG -nf $NORM_FG -sb $SELC_BG -sf $SELC_FG -fn $FONT ${1+"$@"}
