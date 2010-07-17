@@ -5,10 +5,10 @@
 # Author:   Tom Vincent
 # Created:  2009-07-04
 
-if [[ $EUID -ne 0 ]]; then
-    echo "${0##*/} must be run as root" 1>&2
-    exit 1
-fi
+# Imports:
+. "$HOME/proj/src/bash/lib/rootCheck.sh"
+
+rootCheck
 
 CMD="$(ls /etc/network.d/ -1Ap | grep -v \/ | dmenu)"
 if [[ -n "$CMD" ]]; then
