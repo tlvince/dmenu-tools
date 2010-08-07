@@ -3,4 +3,16 @@ dmenu-tools
 
 `dmenu-tools` is a collection of scripts powered by [dmenu][].
 
+It aims to be as POSIX compatible as possible.
+
+## Dependencies
+
+* coreutils
+* dmenu
+
+## Exit codes
+    0   - successful
+    1   - bad argument
+    2   - file not found
+
   [dmenu]: http://tools.suckless.org/dmenu/ "dmenu homepage"
