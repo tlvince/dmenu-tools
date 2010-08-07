@@ -1,94 +1,52 @@
 #!/bin/sh
-# Title:    dmenu-edit
-# Author:   Tom Vincent
-# Created:  0.1.0 (2009-08-04)
 #
-# Use dmenu to search a edit frequently updated dotfiles.
+# dmenu-edit: Use dmenu to open and edit a file from a given list.
 #
-# Influenced by: http://bbs.archlinux.org/viewtopic.php?pid=433877#p433877
+# Copyright 2010 Tom Vincent <http://www.tlvince.com/>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-NAME="dmenu-edit"
-VERSION="0.1.5"
-ARGS="$@"
-DEFAULT_FILE="$HOME/src/bash/backup/dotfiles"
-TERM="urxvtc -e"
+# Global variables:
+FILES="edit-list"       # Defaults to "$HOME/.config/dmenu-tools/edit-list"
+TERMINAL="urxvtc"
+WD="$(dirname "$(readlink -f "$0")")"
+
+# Imports:
+. "$WD/lib/logging.sh"
 
 ##
-# The programs usage options
+# Check to see if EDITOR has been set, otherwise read in.
 #
-usage()
+isSet()
 {
-    cat << EOF
-
-Usage:
-  $NAME [OPTION...] [FILES...]
-  $NAME           Implicitly open the default file (if set)
-
-Program arguments:
-  -v, --version        Output version information and exit
-  -e, --editor         Explicitly set the editor to use
-
-EOF
-}
-
-##
-# Output the current version
-#
-version()
-{
-    echo "$NAME v$VERSION"
-}
-
-##
-# Remove the leading "~/"
-#
-cleanName()
-{
-    cat $ARGS | while read LINE; do
-        echo "$LINE" | awk '{gsub (/~\//, ""); print}'
-    done
-}
-
-##
-# Open up the item in an editor.
-#
-launchEditor()
-{
-    # Check to see if you have escaped dmenu
-    CHOICE=$(cleanName | dmenu)
-    if [ "$CHOICE" != "" ]; then
-        $TERM $EDITOR ~/$CHOICE
+    if [[ -z $EDITORa ]]; then
+        warn "\$EDITOR has not been set"
+        info "Please enter the command of your file editor of choice:"
+        read EDITORa
+        isSet   # Double check
     fi
 }
 
-##
-# Main function.
-#
-case $1 in
-    --version|-v)
-        version
-    ;;
-    --help|-h)
-        usage
-    ;;
-    --editor|-e)
-        # Note, could be set by unexporting the $EDITOR variable before launch
-        # TODO: can this be moved to a function?
-        EDITOR=$2
-        shift 2
-        ARGS="$@"
-        launchEditor
-    ;;
-    *)
-        if [ $# != 0 ]; then
-            launchEditor
-        else
-            if [[ $DEFAULT_FILE ]]; then
-                ARGS=$DEFAULT_FILE
-                launchEditor
-            else
-                usage
-            fi
-        fi
-    ;;
-esac
+# Environment:
+if [[ ! -d "${XDG_CONFIG_HOME:-"$HOME/.config"}/dmenu-tools" ]]; then
+    mkdir -p "${XDG_CONFIG_HOME:-"$HOME/.config"}/dmenu-tools"
+fi
+
+# If not launched in a tty (e.g. using dmenu), open one up:
+tty -s || $TERMINAL -e "$0" # XXX: terminal keeps closing
+choice="$(dmenu < "$HOME/.config/dmenu-tools/edit-list")"
+if [[ $choice ]]; then
+    isSet
+    $EDITORa "$HOME/$choice"
+fi
