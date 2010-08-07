@@ -51,5 +51,9 @@ getDmenu()
     fi
 }
 
+##
+# Launch dmenu with our options, otherwise exit.
+# Note: ${1+"$@"} @see http://mywiki.wooledge.org/WrapperScript
+#
 dmenu="$(getDmenu)" || exit
 "$dmenu" -i -nb $NORM_BG -nf $NORM_FG -sb $SELC_BG -sf $SELC_FG -fn $FONT ${1+"$@"}
