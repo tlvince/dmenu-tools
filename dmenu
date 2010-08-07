@@ -16,15 +16,6 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
-#
-# Depends:
-# * coreutils
-# * dmenu
-#
-# Exit codes:
-#   0   - successful
-#   1   - bad argument
-#   2   - file not found
 
 # Global variables:
 WD="$(dirname "$(readlink -f "$0")")"     # Handle symlinks
