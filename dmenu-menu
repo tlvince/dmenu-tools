@@ -1,36 +1,25 @@
 #!/bin/sh
-# Title:    dmenu-menu
-# Author:   Tom Vincent
-# Created:  2009-08-05
 #
-# A recursive dmenu menu.
+# dmenu-menu: A recursive dmenu menu.
 #
-# Influenced by: http://crunchbanglinux.org/forums/topic/3170/recursive-dmenu/
+# Copyright 2010 Tom Vincent <http://www.tlvince.com/>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-WD=$(dirname $0)
-BASENAME=$(basename $0)
-HIDE="$BASENAME|dmenu-path"
+# Global variables:
+CANONICAL="$(readlink -f "$0")"
+BASE="$(dirname "$CANONICAL")"
 
-#
-# Find the installed modules
-#
-findModules()
-{
-    find $WD -maxdepth 1 -name "dmenu*" ! -name dmenu | grep -Ev "($HIDE)"
-}
-
-#
-# Remove the leading directory path.
-# Note: will only work if the modules are in the $WD
-#
-cleanName()
-{
-    findModules | while read LINE; do
-        echo "$LINE" | sed 's/.*\///g'
-    done
-}
-
-#
-# Main function.
-#
-exec $(cleanName | dmenu)
+choice="$(ls $BASE/dmenu-* | grep -Fv "$CANONICAL" | sed "s|$BASE/||g" | dmenu)"
+[[ $choice ]] && exec "$BASE/$choice"
