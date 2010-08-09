@@ -1,17 +1,38 @@
-#!/bin/bash
+#!/bin/sh
 #
-# Switch network profile using a list displayed with dmenu.
+# dmenu-netcfg: Switch netcfg network profiles.
 #
-# Author:   Tom Vincent
-# Created:  2009-07-04
+# Copyright 2010 Tom Vincent <http://www.tlvince.com/>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# Depends:
+# * netcfg
+
+# Global variables:
+CANONICAL="$(readlink -f "$0")"     # Handle symlinks
+BASE="$(dirname "$CANONICAL")"
 
 # Imports:
-. "$HOME/proj/src/bash/lib/rootCheck.sh"
+. "$BASE/lib/rootCheck.sh"
+. "$BASE/lib/isTerminal.sh"
 
+isTerminal "urxvtc" "sudo $CANONICAL"
 rootCheck
 
-CMD="$(ls /etc/network.d/ -1Ap | grep -v \/ | dmenu)"
-if [[ -n "$CMD" ]]; then
+choice="$(ls /etc/network.d/ -1Ap | grep -v \/ | dmenu)"
+if [[ "$choice" ]]; then
     netcfg -a
-    netcfg $CMD
+    netcfg "$choice"
 fi
