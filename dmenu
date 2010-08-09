@@ -18,7 +18,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 # Global variables:
-WD="$(dirname "$(readlink -f "$0")")"     # Handle symlinks
+BASE="$(dirname "$(readlink -f "$0")")"     # Handle symlinks
 
 ## dmenu options:
 NORM_BG="#101010"
@@ -28,8 +28,8 @@ SELC_FG="#ffffff"
 FONT="-*-terminus-medium-r-*-*-*-*-*-*-*-*-*-*"
 
 # Imports:
-. "$WD/lib/realBin.sh"
-. "$WD/lib/logging.sh"
+. "$BASE/lib/realBin.sh"
+. "$BASE/lib/logging.sh"
 
 ##
 # Get the path to the dmenu binary, otherwise exit.
@@ -42,11 +42,5 @@ getDmenu()
     fi
 }
 
-##
-# Launch dmenu with our options, otherwise exit.
-# Note: ${1+"$@"} @see http://mywiki.wooledge.org/WrapperScript
-#
 dmenu="$(getDmenu)" || exit
-
-"$dmenu" -i -nb $NORM_BG -nf $NORM_FG -sb $SELC_BG -sf $SELC_FG -fn $FONT \
-    ${1+"$@"}
+"$dmenu" -i -nb $NORM_BG -nf $NORM_FG -sb $SELC_BG -sf $SELC_FG -fn $FONT "$@"
