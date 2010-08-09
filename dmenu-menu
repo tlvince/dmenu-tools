@@ -20,6 +20,8 @@
 # Global variables:
 CANONICAL="$(readlink -f "$0")"
 BASE="$(dirname "$CANONICAL")"
+HIDE="$XDG_CONFIG_HOME/dmenu/menu-hide"
 
-choice="$(ls $BASE/dmenu-* | grep -Fv "$CANONICAL" | sed "s|$BASE/||g" | dmenu)"
+choice="$(ls $BASE/dmenu-* | grep -vf "$HIDE" | \
+            sed -e "s|$BASE/||g" -e "/${CANONICAL##*/}/d" | dmenu)"
 [[ $choice ]] && exec "$BASE/$choice"
