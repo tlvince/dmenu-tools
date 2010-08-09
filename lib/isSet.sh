@@ -6,6 +6,5 @@
 #
 isSet()
 {
-    eval tmp=\$$1
-    [[ -z $tmp ]] && read -p "$2" $1 && isSet "$@"
+    [[ -z ${!1} ]] && read -p "$2" $1 && isSet "$@"
 }
