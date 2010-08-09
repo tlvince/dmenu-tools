@@ -1,9 +1,9 @@
 dmenu-tools
 ===========
 
-`dmenu-tools` is a collection of scripts powered by [dmenu][].
+`dmenu-tools` is a collection of scripts powered by [dmenu][]&trade;.
 
-It aims to be as POSIX compatible as possible.
+* It aims to be as POSIX compatible as possible
 
 ## Dependencies
 
