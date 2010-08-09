@@ -18,7 +18,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 # Global variables:
-FILES="$HOME/.config/dmenu-tools/edit-list"
+FILES="$HOME/.config/dmenu/edit-list"
 BASE="$(dirname "$(readlink -f "$0")")"
 
 # Imports:
