@@ -18,14 +18,14 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 # Global variables:
-CANONICAL="$(readlink -f "$0")"
-TERMINAL="urxvtc"
 FILES="$HOME/.config/dmenu-tools/edit-list"
+BASE="$(dirname "$(readlink -f "$0")")"
 
 # Imports:
-. "$(dirname "$CANONICAL")/lib/isSet.sh"
+. "$BASE/lib/isSet.sh"
+. "$BASE/lib/isTerminal.sh"
 
-tty -s || "$TERMINAL" -T "$(basename "$CANONICAL")" -e "$CANONICAL"
+isTerminal
 
 choice="$(tty -s && dmenu < "$FILES")"
 if [[ $choice ]]; then
