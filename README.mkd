@@ -3,12 +3,14 @@ dmenu-tools
 
 `dmenu-tools` is a collection of scripts powered by [dmenu][]&trade;.
 
-* It aims to be as POSIX compatible as possible
-
 ## Dependencies
 
+### Global
 * coreutils
 * dmenu
+
+### dmenu-netcfg
+* netcfg
 
 ## Exit codes
     0   - successful
