@@ -1,15 +1,32 @@
 #!/bin/sh
-# Title:    dmenu-recent
-# Author:   Tom Vincent
-# Version:  0.1.2 (2009-04-05)
 #
-# Original Author:  b3n
-# Source:           http://bbs.archlinux.org/viewtopic.php?pid=529204#p529204
+# dmenu-run-recent: Sort dmenu items by usage. Append ";" to launch the app in
+#                   terminal.
 #
-# Sort dmenu items by usage. Append ";" to launch the app in terminal.
+# Based on: b3n <http://bbs.archlinux.org/viewtopic.php?pid=529204#p529204>
+#
+# Copyright 2009, 2010 Tom Vincent <http://www.tlvince.com/>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-TERMI="urxvtc -e"
-CACHE="$HOME/.cache/dmenu-cache-recent"
+# Environment:
+CACHE="${XDG_CACHE_HOME:-"$HOME/.cache"}"
+[[ -d "$CACHE/dmenu" ]] || mkdir -p "$CACHE/dmenu"
+
+# Global variables:
+TERMINAL="urxvtc -e"
+CACHE+="/dmenu/dmenu-cache-recent"
 
 touch $CACHE
 MOST_USED=`sort $CACHE | uniq -c | sort -r | colrm 1 8`
@@ -18,6 +35,6 @@ RUN=`(echo "$MOST_USED"; dmenu-path | grep -vxF "$MOST_USED") | dmenu` &&
 mv $CACHE.$$ $CACHE
 
 case $RUN in
-    *\;) exec `echo $TERMI $RUN | sed -e 's/;$//'`;;
+    *\;) exec `echo $TERMINAL $RUN | sed -e 's/;$//'`;;
     *)   exec $RUN;;
 esac
