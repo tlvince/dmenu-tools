@@ -24,7 +24,6 @@ BASE="$(dirname "$CANONICAL")"
 PATTERNS="
     s|$BASE/||g
     /${CANONICAL##*/}/d
-    /^dmenu-run$/d
     /^dmenu-path$/d
 "
 
