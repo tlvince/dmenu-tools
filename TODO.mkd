@@ -1,4 +1,0 @@
-# dmenu-edit
-
-* Check to see if script is being run in a terminal or via dmenu and open a new
-  terminal window only if necessary
