@@ -18,35 +18,17 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 # Global variables:
-FILES="edit-list"       # Defaults to "$HOME/.config/dmenu-tools/edit-list"
+CANONICAL="$(readlink -f "$0")"
 TERMINAL="urxvtc"
-WD="$(dirname "$(readlink -f "$0")")"
+FILES="$HOME/.config/dmenu-tools/edit-list"
 
 # Imports:
-. "$WD/lib/logging.sh"
+. "$(dirname "$CANONICAL")/lib/isSet.sh"
 
-##
-# Check to see if EDITOR has been set, otherwise read in.
-#
-isSet()
-{
-    if [[ -z $EDITORa ]]; then
-        warn "\$EDITOR has not been set"
-        info "Please enter the command of your file editor of choice:"
-        read EDITORa
-        isSet   # Double check
-    fi
-}
+tty -s || "$TERMINAL" -T "$(basename "$CANONICAL")" -e "$CANONICAL"
 
-# Environment:
-if [[ ! -d "${XDG_CONFIG_HOME:-"$HOME/.config"}/dmenu-tools" ]]; then
-    mkdir -p "${XDG_CONFIG_HOME:-"$HOME/.config"}/dmenu-tools"
-fi
-
-# If not launched in a tty (e.g. using dmenu), open one up:
-tty -s || $TERMINAL -e "$0" # XXX: terminal keeps closing
-choice="$(dmenu < "$HOME/.config/dmenu-tools/edit-list")"
+choice="$(tty -s && dmenu < "$FILES")"
 if [[ $choice ]]; then
-    isSet
-    $EDITORa "$HOME/$choice"
+    isSet "EDITOR" "Editor: "
+    $EDITOR $(eval "echo $choice")  # Expand tilde XXX: can it be done w/o eval?
 fi
