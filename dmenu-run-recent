@@ -30,7 +30,7 @@ CACHE+="/dmenu/dmenu-cache-recent"
 
 touch $CACHE
 MOST_USED=$(sort $CACHE | uniq -c | sort -r | colrm 1 8)
-RUN=$((echo "$MOST_USED"; dmenu-path | grep -vxF "$MOST_USED") | dmenu) &&
+RUN=$((echo "$MOST_USED"; dmenu-path | grep -vxF "$MOST_USED") | dmenu $@) &&
 (echo $RUN; head -n 99 $CACHE) > $CACHE.$$ &&
 mv $CACHE.$$ $CACHE
 
