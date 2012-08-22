@@ -3,12 +3,12 @@
 # Copyright 2010-2012 Tom Vincent <http://tlvince.com/contact/>
 
 CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/dmenu_run"
-CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
+[ -f "$CACHE" ] || { CACHE="$HOME/.dmenu_cache" && [ -f "$CACHE" ] || exit 1; }
 
-[ -f "$CACHE" ] || exit 1
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
 [ -f "$CONFIG" ] && source "$CONFIG"
 
-prefix="dmenu-"
-choice="$(grep "$prefix" "$CACHE" | egrep -v "path|-menu" | \
+prefix="dmenu_"
+choice="$(grep "$prefix" "$CACHE" | grep -v "_menu" | \
           sed "s/$prefix//" | dmenu $DMENU_OPTS)"
 [ $choice ] && exec "${prefix}$choice"
