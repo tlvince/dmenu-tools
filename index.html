@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>dmenu-tools by tlvince</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>dmenu-tools</h1>
+        <p>A collection of scripts powered by dmenu</p>
+
+        <p class="view"><a href="https://github.com/tlvince/dmenu-tools">View the Project on GitHub <small>tlvince/dmenu-tools</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/tlvince/dmenu-tools/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/tlvince/dmenu-tools/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/tlvince/dmenu-tools">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>dmenu-tools</h1>
+
+<p><code>dmenu-tools</code> is a collection of scripts powered by <a href="http://tools.suckless.org/dmenu/">dmenu</a>.</p>
+
+<h2>Install</h2>
+
+<ul>
+<li><a href="https://aur.archlinux.org/packages.php?ID=62200">Arch Linux AUR Package</a></li>
+</ul><h2>Usage</h2>
+
+<p>All scripts source the following file to set <code>dmenu</code> options (colours, font
+etc.):</p>
+
+<pre><code>"${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
+</code></pre>
+
+<ol>
+<li>
+<p>Create the config directory:</p>
+
+<pre><code>mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools
+</code></pre>
+</li>
+<li>
+<p>Install the example config:</p>
+
+<pre><code>install -Dm644  example/dmenu-tools.conf ~/.config/dmenu-tools/
+</code></pre>
+</li>
+</ol><p>See <code>doc</code> for further, script-specific usage.</p>
+
+<h2>Authors</h2>
+
+<p>Copyright 2009-2012 Tom Vincent <a href="http://tlvince.com/contact/">http://tlvince.com/contact/</a></p>
+
+<p>Portions (<code>dmenu-path</code>) copyright Anselm R. Garbe et al.</p>
+
+<h2>License</h2>
+
+<p>Released under the <a href="http://tlvince.mit-license.org/">MIT License</a>.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/tlvince">tlvince</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
