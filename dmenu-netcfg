@@ -23,15 +23,17 @@
 # Global variables:
 CANONICAL="$(readlink -f "$0")"     # Handle symlinks
 BASE="$(dirname "$CANONICAL")"
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
 
 # Imports:
 . "$BASE/lib/rootCheck.sh"
 . "$BASE/lib/isTerminal.sh"
+[ -f "$CONFIG" ] && source "$CONFIG"
 
 isTerminal "urxvtc" "sudo $CANONICAL"
 rootCheck
 
-choice="$(ls /etc/network.d/ -1Ap | grep -v \/ | dmenu)"
+choice="$(ls /etc/network.d/ -1Ap | grep -v \/ | dmenu $DMENU_OPTS)"
 if [[ "$choice" ]]; then
     netcfg -a
     netcfg "$choice"

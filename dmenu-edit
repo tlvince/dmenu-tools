@@ -20,14 +20,16 @@
 # Global variables:
 FILES="$HOME/.config/dmenu/edit-list"
 BASE="$(dirname "$(readlink -f "$0")")"
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
 
 # Imports:
 . "$BASE/lib/isSet.sh"
 . "$BASE/lib/isTerminal.sh"
+[ -f "$CONFIG" ] && source "$CONFIG"
 
 isTerminal
 
-choice="$(tty -s && dmenu < "$FILES")"
+choice="$(tty -s && dmenu $DMENU_OPTS < "$FILES")"
 if [[ $choice ]]; then
     isSet "EDITOR" "Editor: "
     $EDITOR $(eval "echo $choice")  # Expand tilde XXX: can it be done w/o eval?

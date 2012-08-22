@@ -6,6 +6,8 @@
 CANONICAL="$(readlink -f "$0")"
 BASE="$(dirname "$CANONICAL")"
 PREFIX="dmenu-"
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
+[ -f "$CONFIG" ] && source "$CONFIG"
 
 PATTERNS="
     s|$BASE/||g
@@ -14,5 +16,5 @@ PATTERNS="
     s/$PREFIX//g
 "
 
-choice="$(ls ${BASE}/${PREFIX}* | sed -e "$PATTERNS" | dmenu)"
+choice="$(ls ${BASE}/${PREFIX}* | sed -e "$PATTERNS" | dmenu $DMENU_OPTS)"
 [[ $choice ]] && exec "$BASE/${PREFIX}$choice"

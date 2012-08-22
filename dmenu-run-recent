@@ -24,13 +24,16 @@
 CACHE="${XDG_CACHE_HOME:-"$HOME/.cache"}"
 [[ -d "$CACHE/dmenu" ]] || mkdir -p "$CACHE/dmenu"
 
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
+[ -f "$CONFIG" ] && source "$CONFIG"
+
 # Global variables:
 TERM="urxvtc -e"
 CACHE+="/dmenu/dmenu-cache-recent"
 
 touch $CACHE
 MOST_USED=$(sort $CACHE | uniq -c | sort -r | colrm 1 8)
-RUN=$((echo "$MOST_USED"; dmenu-path | grep -vxF "$MOST_USED") | dmenu) &&
+RUN=$((echo "$MOST_USED"; dmenu-path | grep -vxF "$MOST_USED") | dmenu $DMENU_OPTS) &&
 (echo $RUN; head -n 99 $CACHE) > $CACHE.$$ &&
 mv $CACHE.$$ $CACHE
 

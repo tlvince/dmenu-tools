@@ -17,4 +17,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-exe=$(dmenu-path | dmenu) && exec $exe
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
+[ -f "$CONFIG" ] && source "$CONFIG"
+
+exe=$(dmenu-path | dmenu $DMENU_OPTS) && exec $exe
