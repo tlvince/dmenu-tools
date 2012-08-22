@@ -26,9 +26,9 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 
-CACHE="${XDG_CACHE_HOME:-"$HOME/.cache"}"
-test -d "$CACHE/dmenu" || mkdir -p "$CACHE/dmenu"
-CACHE+="/dmenu-tools/dmenu-cache"
+CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/dmenu-tools"
+mkdir -p "$CACHE"
+CACHE+="/dmenu-cache.txt"
 
 IFS=:
 
