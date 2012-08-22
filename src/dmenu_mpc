@@ -5,4 +5,5 @@
 CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
 [ -f "$CONFIG" ] && source "$CONFIG"
 
-mpc $(mpc help | grep "  mpc [a-z]" | awk '{print $2}' | dmenu $DMENU_OPTS -p "mpc")
+${SHELL:-/bin/sh} -c "mpc $(mpc help | grep '  mpc [a-z]' | awk '{print $2}' |
+                            dmenu $DMENU_OPTS -p 'mpc') &" &
