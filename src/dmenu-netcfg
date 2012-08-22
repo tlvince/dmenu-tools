@@ -2,21 +2,12 @@
 # Switch netcfg network profiles.
 # Copyright 2010-2012 Tom Vincent <http://tlvince.com/contact/>
 
-# Global variables:
-CANONICAL="$(readlink -f "$0")"     # Handle symlinks
-BASE="$(dirname "$CANONICAL")"
 CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
+NETCFG="/etc/network.d"
 
-# Imports:
-. "$BASE/lib/rootCheck.sh"
-. "$BASE/lib/isTerminal.sh"
 [ -f "$CONFIG" ] && source "$CONFIG"
 
-isTerminal "urxvtc" "sudo $CANONICAL"
-rootCheck
+choice="$(find /etc/network.d -maxdepth 1 -type f -printf "%f\n" | \
+          dmenu $DMENU_OPTS)"
 
-choice="$(ls /etc/network.d/ -1Ap | grep -v \/ | dmenu $DMENU_OPTS)"
-if [[ "$choice" ]]; then
-    netcfg -a
-    netcfg "$choice"
-fi
+[ "$choice" ] && $TERMINAL -e sh -c "sudo netcfg -a && sudo netcfg \"$choice\""
