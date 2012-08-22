@@ -8,5 +8,7 @@ CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
 [ -f "$CACHE" ] || exit 1
 [ -f "$CONFIG" ] && source "$CONFIG"
 
-choice="$(grep "dmenu-" "$CACHE" | egrep -v "path|-menu" | dmenu $DMENU_OPTS)"
+prefix="dmenu-"
+choice="$(grep "$prefix" "$CACHE" | egrep -v "path|-menu" | \
+          sed "s/$prefix//" | dmenu $DMENU_OPTS)"
 [ $choice ] && exec "$choice"
