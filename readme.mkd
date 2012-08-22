@@ -1,21 +1,10 @@
-dmenu-tools
-===========
+# dmenu-tools
 
-`dmenu-tools` is a collection of scripts powered by [dmenu][]&trade;.
+`dmenu-tools` is a collection of scripts powered by [dmenu][].
 
-## Dependencies
+## Usage
 
-### Global
-* coreutils
-* dmenu
-
-### dmenu-netcfg
-* netcfg
-
-## Exit codes
-    0   - successful
-    1   - bad argument
-    2   - file not found
+See `docs` for script-specific documentation.
 
 ## Authors
 
@@ -27,5 +16,5 @@ Portions (`dmenu-path`) copyright Anselm R. Garbe et al.
 
 Released under the [MIT License][license].
 
-  [dmenu]: http://tools.suckless.org/dmenu/ "dmenu homepage"
+  [dmenu]: http://tools.suckless.org/dmenu/
   [license]: http://tlvince.mit-license.org/
