@@ -1,4 +1,4 @@
-# dmenu-netcfg
+# dmenu_netcfg
 
 Switch `netcfg` network profiles.
 

@@ -1,4 +1,4 @@
-# dmenu-run-recent
+# dmenu_run_recent
 
 Sort `dmenu` items by usage. Append ';' to launch the command in a terminal.
 

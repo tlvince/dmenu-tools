@@ -1,6 +1,6 @@
-# dmenu-edit
+# dmenu_edit
 
-Use dmenu to open and edit a file from a given list.
+Use `dmenu` to open and edit a file from a given list.
 
 ## Usage
 
