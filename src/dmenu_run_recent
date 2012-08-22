@@ -7,7 +7,7 @@ mkdir -p "$CACHE"
 CACHE+="/dmenu_run_recent"
 touch $CACHE
 
-CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
 [ -f "$CONFIG" ] && source "$CONFIG"
 
 MOST_USED=$(sort $CACHE | uniq -c | sort -r | colrm 1 8)

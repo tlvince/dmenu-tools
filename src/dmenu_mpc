@@ -2,7 +2,7 @@
 # Control mpc via dmenu.
 # Copyright 2010-2012 Tom Vincent <http://tlvince.com/contact>
 
-CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
 [ -f "$CONFIG" ] && source "$CONFIG"
 
 mpc $(mpc help | grep "  mpc [a-z]" | awk '{print $2}' | dmenu $DMENU_OPTS -p "mpc")
