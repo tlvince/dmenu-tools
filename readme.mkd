@@ -13,13 +13,9 @@ etc.):
 
     "${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
 
-1. Create the config directory:
+1. Install the example config:
 
-        mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools
-
-2. Install the example config:
-
-        install -Dm644  example/dmenu-tools.conf ~/.config/dmenu-tools/
+        install -Dm644  example/dmenu-tools.conf ~/.config/dmenu-tools/dmenu-tools.conf
 
 See `doc` for further, script-specific usage.
 
