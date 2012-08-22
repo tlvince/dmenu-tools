@@ -1,6 +1,6 @@
 #!/bin/sh
-# dmenu-mpc: Control mpc via dmenu.
-# Copyright 2010 Tom Vincent <http://www.tlvince.com/contact/>
+# Control mpc via dmenu.
+# Copyright 2010-2012 Tom Vincent <http://tlvince.com/contact>
 
 CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
 [ -f "$CONFIG" ] && source "$CONFIG"

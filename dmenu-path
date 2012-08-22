@@ -1,17 +1,12 @@
 #!/bin/sh
-#
-# dmenu-path: Make dmenu's cache file conform to XDG base spec.
-#
-# 2010 Tom Vincent <http://www.tlvince.com/>
-#
-# This file was originally part of the dmenu package as "dmenu_path", whose
-# license follows:
+# Make dmenu's cache file conform to XDG base spec.
 #
 # MIT/X Consortium License
 #
 # © 2006-2008 Anselm R. Garbe <garbeam at gmail dot com>
 # © 2006-2008 Sander van Dijk <a dot h dot vandijk at gmail dot com>
 # © 2006-2007 Michał Janeczek <janeczek at gmail dot com>
+# © 2010-2012 Tom Vincent <http://www.tlvince.com/> 
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
