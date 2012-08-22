@@ -2,12 +2,12 @@
 # Sort dmenu items by usage. Append ";" to launch the app in terminal.
 # Copyright 2009-2012 Tom Vincent <http://tlvince.com/contact/>
 
-CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/dmenu-tools"
+CACHE="${XDG_CACHE_HOME:-$HOME/.cache}"
 mkdir -p "$CACHE"
-CACHE+="/dmenu-cache-recent.txt"
+CACHE+="/dmenu_run_recent"
 touch $CACHE
 
-CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
 [ -f "$CONFIG" ] && source "$CONFIG"
 
 MOST_USED=$(sort $CACHE | uniq -c | sort -r | colrm 1 8)
