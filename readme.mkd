@@ -17,4 +17,15 @@ dmenu-tools
     1   - bad argument
     2   - file not found
 
+## Authors
+
+Copyright 2009-2012 Tom Vincent <http://tlvince.com/contact/>
+
+Portions (`dmenu-path`) copyright Anselm R. Garbe et al.
+
+## License
+
+Released under the [MIT License][license].
+
   [dmenu]: http://tools.suckless.org/dmenu/ "dmenu homepage"
+  [license]: http://tlvince.mit-license.org/
