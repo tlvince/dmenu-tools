@@ -1,0 +1,8 @@
+# dmenu-menu
+
+A recursive dmenu menu.
+
+## Usage
+
+Assumes `dmenu-path` has been called at least once (to create
+`dmenu-cache.txt`).

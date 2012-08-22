@@ -1,20 +1,12 @@
 #!/bin/sh
 # A recursive dmenu menu.
-# Copyright 2010-2012 Tom Vincent <http://tlvince.com/contact>
+# Copyright 2010-2012 Tom Vincent <http://tlvince.com/contact/>
 
-# Global variables:
-CANONICAL="$(readlink -f "$0")"
-BASE="$(dirname "$CANONICAL")"
-PREFIX="dmenu-"
+CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/dmenu-tools/dmenu-cache.txt"
 CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
+
+[ -f "$CACHE" ] || exit 1
 [ -f "$CONFIG" ] && source "$CONFIG"
 
-PATTERNS="
-    s|$BASE/||g
-    /${CANONICAL##*/}/d
-    /^${PREFIX}path$/d
-    s/$PREFIX//g
-"
-
-choice="$(ls ${BASE}/${PREFIX}* | sed -e "$PATTERNS" | dmenu $DMENU_OPTS)"
-[[ $choice ]] && exec "$BASE/${PREFIX}$choice"
+choice="$(grep "dmenu-" "$CACHE" | egrep -v "path|-menu" | dmenu $DMENU_OPTS)"
+[ $choice ] && exec "$choice"
