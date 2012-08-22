@@ -1,0 +1,3 @@
+# dmenu-mpc
+
+Control `mpc` via `dmenu`.
