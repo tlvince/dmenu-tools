@@ -1,2 +1,0 @@
-* Make the decision now on portability. Right now there is no guarantee it'll
-  work on anything other than Bash.
