@@ -28,7 +28,7 @@
 
 CACHE="${XDG_CACHE_HOME:-"$HOME/.cache"}"
 test -d "$CACHE/dmenu" || mkdir -p "$CACHE/dmenu"
-CACHE+="/dmenu/dmenu-cache"
+CACHE+="/dmenu-tools/dmenu-cache"
 
 IFS=:
 

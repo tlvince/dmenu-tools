@@ -2,7 +2,7 @@
 # Run commands listed in $PATH.
 # Copyright 2010-2012 Tom Vincent <http://tlvince.com/contact/>
 
-CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
 [ -f "$CONFIG" ] && source "$CONFIG"
 
 exe=$(dmenu-path | dmenu $DMENU_OPTS) && exec $exe

@@ -3,9 +3,9 @@
 # Copyright 2010-2012 Tom Vincent <http://tlvince.com/contact>
 
 # Global variables:
-FILES="$HOME/.config/dmenu/edit-list"
+FILES="$HOME/.config/dmenu-tools/edit-list"
 BASE="$(dirname "$(readlink -f "$0")")"
-CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
 
 # Imports:
 . "$BASE/lib/isSet.sh"

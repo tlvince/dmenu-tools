@@ -5,7 +5,7 @@
 # Global variables:
 CANONICAL="$(readlink -f "$0")"     # Handle symlinks
 BASE="$(dirname "$CANONICAL")"
-CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
 
 # Imports:
 . "$BASE/lib/rootCheck.sh"

@@ -6,7 +6,7 @@
 CANONICAL="$(readlink -f "$0")"
 BASE="$(dirname "$CANONICAL")"
 PREFIX="dmenu-"
-CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
 [ -f "$CONFIG" ] && source "$CONFIG"
 
 PATTERNS="
