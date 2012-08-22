@@ -1,0 +1,12 @@
+# dmenu-edit
+
+Use dmenu to open and edit a file from a given list.
+
+## Usage
+
+1. Create a newline seperated list of files in:
+
+        ${XDG_LOCAL_HOME:-$HOME/.local/share}/dmenu-tools/edit.txt
+
+2. Confirm the environment variables `$TERMINAL` and `$EDITOR` are set (can be
+   defined in `dmenu-tools.conf`)
