@@ -2,6 +2,10 @@
 
 `dmenu-tools` is a collection of scripts powered by [dmenu][].
 
+## Install
+
+* [Arch Linux AUR Package][aur]
+
 ## Usage
 
 All scripts source the following file to set `dmenu` options (colours, font
@@ -29,5 +33,6 @@ Portions (`dmenu-path`) copyright Anselm R. Garbe et al.
 
 Released under the [MIT License][license].
 
+  [aur]: https://aur.archlinux.org/packages.php?ID=62200
   [dmenu]: http://tools.suckless.org/dmenu/
   [license]: http://tlvince.mit-license.org/
