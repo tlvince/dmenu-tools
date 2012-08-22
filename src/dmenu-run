@@ -5,4 +5,4 @@
 CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
 [ -f "$CONFIG" ] && source "$CONFIG"
 
-exe=$(dmenu-path | dmenu $DMENU_OPTS) && exec $exe
+exe="$(dmenu-path | dmenu $DMENU_OPTS)" && exec "$exe"
