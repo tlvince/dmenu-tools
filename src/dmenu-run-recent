@@ -2,24 +2,20 @@
 # Sort dmenu items by usage. Append ";" to launch the app in terminal.
 # Copyright 2009-2012 Tom Vincent <http://tlvince.com/contact/>
 
-# Environment:
-CACHE="${XDG_CACHE_HOME:-"$HOME/.cache"}"
-[[ -d "$CACHE/dmenu" ]] || mkdir -p "$CACHE/dmenu"
+CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/dmenu-tools"
+mkdir -p "$CACHE"
+CACHE+="/dmenu-cache-recent.txt"
+touch $CACHE
 
 CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
 [ -f "$CONFIG" ] && source "$CONFIG"
 
-# Global variables:
-TERM="urxvtc -e"
-CACHE+="/dmenu-tools/dmenu-cache-recent"
-
-touch $CACHE
 MOST_USED=$(sort $CACHE | uniq -c | sort -r | colrm 1 8)
 RUN=$((echo "$MOST_USED"; dmenu-path | grep -vxF "$MOST_USED") | dmenu $DMENU_OPTS) &&
 (echo $RUN; head -n 99 $CACHE) > $CACHE.$$ &&
 mv $CACHE.$$ $CACHE
 
 case $RUN in
-    *\;) exec $(echo $TERM ${RUN/;/});;
+    *\;) exec $(echo $TERMINAL -e ${RUN/;/});;
     *)   exec $RUN;;
 esac
