@@ -16,6 +16,6 @@ RUN=$((echo "$MOST_USED"; dmenu-path | grep -vxF "$MOST_USED") | dmenu $DMENU_OP
 mv $CACHE.$$ $CACHE
 
 case $RUN in
-    *\;) ${SHELL:-sh} $(echo $TERMINAL -e ${RUN/;/}) &;;
-    *)   ${SHELL:-sh} $RUN &;;
+    *\;) ${SHELL:-/bin/sh} $(echo $TERMINAL -e ${RUN/;/}) &;;
+    *)   ${SHELL:-/bin/sh} $RUN &;;
 esac

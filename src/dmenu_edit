@@ -9,4 +9,4 @@ CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
 [ -f "$CONFIG" ] && source "$CONFIG"
 
 choice="$(dmenu $DMENU_OPTS < "$LOCAL")"
-[ $choice ] && ${SHELL:-sh} -c "$TERMINAL -e $EDITOR \"$choice\" &" &
+[ $choice ] && ${SHELL:-/bin/sh} -c "$TERMINAL -e $EDITOR \"$choice\" &" &

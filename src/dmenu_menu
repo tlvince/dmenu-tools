@@ -11,4 +11,4 @@ CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
 prefix="dmenu_"
 choice="$(grep "$prefix" "$CACHE" | grep -v "_menu" | \
           sed "s/$prefix//" | dmenu $DMENU_OPTS)"
-[ $choice ] && ${SHELL:-sh} -c "${prefix}$choice &" &
+[ $choice ] && ${SHELL:-/bin/sh} -c "${prefix}$choice &" &
