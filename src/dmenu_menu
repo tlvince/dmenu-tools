@@ -5,7 +5,7 @@
 CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/dmenu_run"
 [ -f "$CACHE" ] || { CACHE="$HOME/.dmenu_cache" && [ -f "$CACHE" ] || exit 1; }
 
-CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
 [ -f "$CONFIG" ] && source "$CONFIG"
 
 prefix="dmenu_"

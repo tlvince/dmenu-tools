@@ -5,4 +5,4 @@ Sort `dmenu` items by usage. Append ';' to launch the command in a terminal.
 ## Usage
 
 1. Confirm the `$TERMINAL` environment variable is set (can be set in
-   `dmenu-tools.conf`)
+   `dmenu.conf`)

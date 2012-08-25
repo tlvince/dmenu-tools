@@ -2,8 +2,8 @@
 # Use dmenu to open and edit a file from a given list.
 # Copyright 2010-2012 Tom Vincent <http://tlvince.com/contact/>
 
-LOCAL="${XDG_LOCAL_HOME:-$HOME/.local/share}/dmenu-tools/edit.txt"
-CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu-tools/dmenu-tools.conf"
+LOCAL="${XDG_LOCAL_HOME:-$HOME/.local/share}/dmenu/edit.txt"
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
 
 [ -f "$LOCAL" ] || exit 1
 [ -f "$CONFIG" ] && source "$CONFIG"
