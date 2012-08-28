@@ -5,5 +5,6 @@
 CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
 [ -f "$CONFIG" ] && . "$CONFIG"
 
-${SHELL:-/bin/sh} -c "mpc $(mpc help | grep '  mpc [a-z]' | awk '{print $2}' |
-                            dmenu $DMENU_OPTS -p 'mpc') &" &
+cmd=$(mpc help | grep '  mpc [a-z]' | cut -d ' ' -f 4 | \
+      dmenu $DMENU_OPTS "$@" -p 'mpc')
+[ $cmd ] && "${SHELL:-/bin/sh}" -c "mpc $cmd >/dev/null 2>&1 &" &
