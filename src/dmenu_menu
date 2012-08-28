@@ -9,6 +9,6 @@ CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
 [ -f "$CONFIG" ] && . "$CONFIG"
 
 prefix="dmenu_"
-choice="$(grep "$prefix" "$CACHE" | egrep -v "_menu|_path" | \
+cmd="$(grep "$prefix" "$CACHE" | egrep -v "_menu|_path" | \
           sed "s/$prefix//" | dmenu $DMENU_OPTS)"
-[ $choice ] && "${SHELL:-/bin/sh}" -c "${prefix}$choice &" &
+[ $cmd ] && "${SHELL:-/bin/sh}" -c "${prefix}$cmd &" &
