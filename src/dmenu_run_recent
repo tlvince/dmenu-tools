@@ -1,21 +1,13 @@
 #!/bin/sh
-# Sort dmenu items by usage. Append ";" to launch the app in terminal.
+# Sort dmenu items by usage.
 # Copyright 2009-2012 Tom Vincent <http://tlvince.com/contact/>
 
-CACHE="${XDG_CACHE_HOME:-$HOME/.cache}"
-mkdir -p "$CACHE"
-CACHE+="/dmenu_run_recent"
-touch $CACHE
+CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/dmenu_run"
+[ -f "$CACHE" ] && CACHE="${CACHE}_recent" || CACHE="$HOME/.dmenu_cache_recent"
 
 CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
-[ -f "$CONFIG" ] && source "$CONFIG"
+[ -f "$CONFIG" ] && . "$CONFIG"
 
-MOST_USED=$(sort $CACHE | uniq -c | sort -r | colrm 1 8)
-RUN=$((echo "$MOST_USED"; dmenu-path | grep -vxF "$MOST_USED") | dmenu $DMENU_OPTS) &&
-(echo $RUN; head -n 99 $CACHE) > $CACHE.$$ &&
-mv $CACHE.$$ $CACHE
-
-case $RUN in
-    *\;) ${SHELL:-/bin/sh} $(echo $TERMINAL -e ${RUN/;/}) &;;
-    *)   ${SHELL:-/bin/sh} $RUN &;;
-esac
+frequent=$([ -f "$CACHE" ] && sort "$CACHE" | uniq -c | sort -r | colrm 1 8)
+(echo "$frequent"; dmenu_path | grep -vxF "$frequent") | \
+  dmenu $DMENU_OPTS "$@" | tee -a "$CACHE" | "${SHELL:-/bin/sh}" &
