@@ -8,6 +8,6 @@ CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/dmenu_run"
 CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
 [ -f "$CONFIG" ] && . "$CONFIG"
 
-frequent=$([ -f "$CACHE" ] && sort "$CACHE" | uniq -c | sort -r | colrm 1 8)
+frequent=$([ -f "$CACHE" ] && sort "$CACHE" | uniq -c | sort -rn | colrm 1 8)
 { echo "$frequent"; dmenu_path | grep -vxF "$frequent"; } | \
   dmenu $DMENU_OPTS "$@" | tee -a "$CACHE" | "${SHELL:-/bin/sh}" &
