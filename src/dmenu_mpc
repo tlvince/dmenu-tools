@@ -3,7 +3,7 @@
 # Copyright 2010-2012 Tom Vincent <http://tlvince.com/contact>
 
 CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
-[ -f "$CONFIG" ] && source "$CONFIG"
+[ -f "$CONFIG" ] && . "$CONFIG"
 
 ${SHELL:-/bin/sh} -c "mpc $(mpc help | grep '  mpc [a-z]' | awk '{print $2}' |
                             dmenu $DMENU_OPTS -p 'mpc') &" &
