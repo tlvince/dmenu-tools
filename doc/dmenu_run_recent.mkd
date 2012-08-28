@@ -1,8 +1,3 @@
 # dmenu_run_recent
 
-Sort `dmenu` items by usage. Append ';' to launch the command in a terminal.
-
-## Usage
-
-1. Confirm the `$TERMINAL` environment variable is set (can be set in
-   `dmenu.conf`)
+Sort `dmenu` items by usage.
