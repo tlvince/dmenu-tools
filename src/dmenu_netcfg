@@ -10,5 +10,5 @@ NETCFG="/etc/network.d"
 cmd="$(find /etc/network.d -maxdepth 1 -type f -printf "%f\n" | \
           dmenu $DMENU_OPTS)"
 
-[ "$cmd" ] && ${SHELL:-/bin/sh} -c "$TERMINAL -e sh -c \
+[ "$cmd" ] && "${SHELL:-/bin/sh}" -c "$TERMINAL -e sh -c \
   \"sudo netcfg -a && sudo netcfg \"$cmd\"\" &" &
