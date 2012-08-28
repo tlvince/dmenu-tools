@@ -8,5 +8,5 @@ CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
 [ -f "$LOCAL" ] || exit 1
 [ -f "$CONFIG" ] && . "$CONFIG"
 
-cmd="$(dmenu $DMENU_OPTS < "$LOCAL")"
+cmd="$(dmenu $DMENU_OPTS "$@" < "$LOCAL")"
 [ $cmd ] && "${SHELL:-/bin/sh}" -c "$TERMINAL -e $EDITOR \"$cmd\" &" &
