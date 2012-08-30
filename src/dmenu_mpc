@@ -7,4 +7,4 @@ CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
 
 cmd=$(mpc help | grep '  mpc [a-z]' | cut -d ' ' -f 4 | \
       dmenu $DMENU_OPTS "$@" -p 'mpc')
-[ $cmd ] && "${SHELL:-/bin/sh}" -c "mpc $cmd >/dev/null 2>&1 &" &
+[ $cmd ] && "${SHELL:-/bin/sh}" -c "mpc --quiet $cmd >/dev/null 2>&1 &" &
