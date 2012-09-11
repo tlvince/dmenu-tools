@@ -2,7 +2,7 @@
 # Control mpc via dmenu.
 # Copyright 2010-2012 Tom Vincent <http://tlvince.com/contact>
 
-CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
+[ "$CONFIG" ] || CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
 [ -f "$CONFIG" ] && . "$CONFIG"
 
 _mpc() { mpc --quiet "$@" 2>/dev/null & }

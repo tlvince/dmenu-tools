@@ -2,10 +2,10 @@
 # Sort dmenu items by usage.
 # Copyright 2009-2012 Tom Vincent <http://tlvince.com/contact/>
 
-CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/dmenu_run"
+[ "$CACHE" ] || CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/dmenu_run"
 [ -f "$CACHE" ] && CACHE="${CACHE}_recent" || CACHE="$HOME/.dmenu_cache_recent"
 
-CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
+[ "$CONFIG" ] || CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
 [ -f "$CONFIG" ] && . "$CONFIG"
 
 frequent=$([ -f "$CACHE" ] && sort "$CACHE" | uniq -c | sort -rn | colrm 1 8)
