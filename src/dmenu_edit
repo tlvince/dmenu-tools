@@ -8,5 +8,5 @@
 [ -f "$LOCAL" ] || exit 1
 [ -f "$CONFIG" ] && . "$CONFIG"
 
-cmd="$(dmenu $DMENU_OPTS "$@" < "$LOCAL")"
-[ $cmd ] && "${SHELL:-/bin/sh}" -c "$TERMINAL -e $EDITOR \"$cmd\" &" &
+file="$(dmenu $DMENU_OPTS "$@" < "$LOCAL")"
+[ "$file" ] && "${SHELL:-/bin/sh}" -c "$TERMINAL -e $EDITOR \"$file\" &" &
