@@ -5,3 +5,7 @@ A recursive `dmenu` menu.
 ## Usage
 
 Assumes `dmenu_run` has been called at least once (to create cache file).
+
+An alternative cache file can be passed at runtime:
+
+    $ CACHE="/tmp/my.cache" dmenu_menu
