@@ -11,4 +11,4 @@
 prefix="dmenu_"
 cmd="$(grep "$prefix" "$CACHE" | egrep -v "_menu|_path" | \
           sed "s/$prefix//" | dmenu $DMENU_OPTS "$@")"
-[ $cmd ] && "${SHELL:-/bin/sh}" -c "${prefix}$cmd &" &
+[ "$cmd" ] && "${SHELL:-/bin/sh}" -c "${prefix}$cmd &" &
