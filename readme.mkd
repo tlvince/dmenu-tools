@@ -6,6 +6,10 @@
 
 * [Arch Linux AUR Package][aur]
 
+Install the example config:
+
+    install -Dm644  example/dmenu.conf ~/.config/dmenu/dmenu.conf
+
 ## Usage
 
 All scripts source the following file to set `dmenu` options (colours, font
@@ -13,9 +17,9 @@ etc.):
 
     "${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
 
-1. Install the example config:
+The config file path can also be set at runtime:
 
-        install -Dm644  example/dmenu.conf ~/.config/dmenu/dmenu.conf
+    $ CONFIG="/tmp/dmenu.config" dmenu_mpc
 
 See `doc` for further, script-specific usage.
 
