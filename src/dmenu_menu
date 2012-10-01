@@ -2,7 +2,7 @@
 # A recursive dmenu menu.
 # Copyright 2010-2012 Tom Vincent <http://tlvince.com/contact/>
 
-[ "$CACHE" ] || CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/dmenu_run"
+CACHE="${CACHE:-${XDG_CACHE_HOME:-$HOME/.cache}/dmenu_run}"
 [ -f "$CACHE" ] || { CACHE="$HOME/.dmenu_cache" && [ -f "$CACHE" ] || exit 1; }
 
 [ "$CONFIG" ] || CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"

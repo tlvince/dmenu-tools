@@ -2,7 +2,7 @@
 # Switch netcfg network profiles.
 # Copyright 2010-2012 Tom Vincent <http://tlvince.com/contact/>
 
-[ "$CONFIG" ] || CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
+CONFIG="${CONFIG:-${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf}"
 [ -f "$CONFIG" ] && . "$CONFIG"
 
 cmd="$(find /etc/network.d -maxdepth 1 -type f -printf "%f\n" | \
