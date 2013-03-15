@@ -1,6 +1,6 @@
 #!/bin/sh
 # Sort dmenu items by usage.
-# Copyright 2009-2012 Tom Vincent <http://tlvince.com/contact/>
+# Copyright 2009-2013 Tom Vincent <http://tlvince.com/contact/>
 
 CACHE="${CACHE:-${XDG_CACHE_HOME:-$HOME/.cache}/dmenu_run}"
 [ -f "$CACHE" ] && CACHE="${CACHE}_recent" || CACHE="$HOME/.dmenu_cache_recent"
