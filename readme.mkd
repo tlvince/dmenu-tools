@@ -4,6 +4,8 @@
 
 ## Install
 
+Use the provided `makefile`, or install via a distribution package:
+
 * [Arch Linux AUR Package][aur]
 
 ## Usage
