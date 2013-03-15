@@ -10,7 +10,7 @@ Use the provided `makefile`, or install via a distribution package:
 
 ## Usage
 
-See `doc` for script-specific usage.
+See `doc` for script-specific usage and dependencies.
 
 ## Authors
 
