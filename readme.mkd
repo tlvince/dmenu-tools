@@ -6,10 +6,6 @@
 
 * [Arch Linux AUR Package][aur]
 
-Install the example config:
-
-    install -Dm644  example/dmenu.conf ~/.config/dmenu/dmenu.conf
-
 ## Usage
 
 See `doc` for script-specific usage.
