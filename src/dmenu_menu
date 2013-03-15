@@ -7,5 +7,5 @@ CACHE="${CACHE:-${XDG_CACHE_HOME:-$HOME/.cache}/dmenu_run}"
 
 prefix="dmenu_"
 cmd="$(grep "$prefix" "$CACHE" | egrep -v "_menu|_path" | \
-          sed "s/$prefix//" | dmenu "$@")"
+       sed "s/$prefix//" | dmenu "$@")"
 [ "$cmd" ] && "${SHELL:-/bin/sh}" -c "${prefix}$cmd &" &
