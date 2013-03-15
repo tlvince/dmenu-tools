@@ -5,10 +5,7 @@
 CACHE="${CACHE:-${XDG_CACHE_HOME:-$HOME/.cache}/dmenu_run}"
 [ -f "$CACHE" ] || { CACHE="$HOME/.dmenu_cache" && [ -f "$CACHE" ] || exit 1; }
 
-[ "$CONFIG" ] || CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf"
-[ -f "$CONFIG" ] && . "$CONFIG"
-
 prefix="dmenu_"
 cmd="$(grep "$prefix" "$CACHE" | egrep -v "_menu|_path" | \
-          sed "s/$prefix//" | dmenu $DMENU_OPTS "$@")"
+          sed "s/$prefix//" | dmenu "$@")"
 [ "$cmd" ] && "${SHELL:-/bin/sh}" -c "${prefix}$cmd &" &

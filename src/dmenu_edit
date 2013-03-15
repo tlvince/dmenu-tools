@@ -3,10 +3,7 @@
 # Copyright 2010-2013 Tom Vincent <http://tlvince.com/contact/>
 
 LOCAL="${LOCAL:-${XDG_LOCAL_HOME:-$HOME/.local/share}/dmenu/edit.txt}"
-CONFIG="${CONFIG:-${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf}"
-
 [ -f "$LOCAL" ] || exit 1
-[ -f "$CONFIG" ] && . "$CONFIG"
 
-file="$(dmenu $DMENU_OPTS "$@" < "$LOCAL")"
+file="$(dmenu "$@" < "$LOCAL")"
 [ "$file" ] && "${SHELL:-/bin/sh}" -c "$TERMINAL -e $EDITOR \"$file\" &" &

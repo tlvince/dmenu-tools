@@ -2,19 +2,15 @@
 # Control mpc via dmenu.
 # Copyright 2010-2013 Tom Vincent <http://tlvince.com/contact>
 
-CONFIG="${CONFIG:-${XDG_CONFIG_HOME:-$HOME/.config}/dmenu/dmenu.conf}"
-[ -f "$CONFIG" ] && . "$CONFIG"
-
 _mpc() { mpc --quiet "$@" 2>/dev/null & }
 
 playlist() {
   songs="$(mpc playlist)"
-  song="$(echo "$songs" | $dmenu)"
+  song="$(echo "$songs" | dmenu "$@")"
   [ "$song" ] && _mpc play $(echo "$songs" | grep -n "$song" | cut -d ':' -f 1)
 }
 
-dmenu="dmenu $DMENU_OPTS $@"
-cmd=$(mpc help | grep '  mpc [a-z]' | cut -d ' ' -f 4 | $dmenu -p 'mpc')
+cmd=$(mpc help | grep '  mpc [a-z]' | cut -d ' ' -f 4 | dmenu -p 'mpc' "$@")
 
 [ "$cmd" ] && case "$cmd" in
   playlist) playlist;;
