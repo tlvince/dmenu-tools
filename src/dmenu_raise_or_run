@@ -2,5 +2,8 @@
 # Raise a command's window if it exists, otherwise run it.
 # Copyright 2013 Tom Vincent <http://tlvince.com/contact/>
 
-cmd="$(dmenu_path | dmenu "$@")"
+CACHE="${CACHE:-${XDG_CACHE_HOME:-$HOME/.cache}/dmenu_run}"
+[ -f "$CACHE" ] || { CACHE="$HOME/.dmenu_cache" && [ -f "$CACHE" ] || exit 1; }
+
+cmd="$(dmenu "$@" < "$CACHE")"
 [ "$cmd" ] && { wmctrl -a "$cmd" || ${SHELL:-"/bin/sh"} -c "$cmd &" & }
