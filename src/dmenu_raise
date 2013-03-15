@@ -2,15 +2,5 @@
 # List and switch to a window.
 # Copyright 2013 Tom Vincent <http://tlvince.com/contact/>
 
-# Heavily inspired by Andreas Amann's script:
-# http://permalink.gmane.org/gmane.comp.misc.suckless/11391
-
-ids=$(xprop -root _NET_CLIENT_LIST | cut -d "#" -f 2| tr "," " ")
-
-window=$(
-  for id in $ids; do
-    echo "$(xprop -id $id WM_CLASS WM_NAME | cut -d '"' -f 2 | tr "\n", " ")| $id"
-  done | dmenu -l 5 "$@"
-)
-
-[ "$window" ] && xdotool windowactivate $(echo $window | cut -d "|" -f 2)
+win="$(wmctrl -l | dmenu -l 5 "$@" | cut -d  ' ' -f 1)"
+[ "$win" ] && wmctrl -ia "$win" &
