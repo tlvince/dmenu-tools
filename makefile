@@ -14,7 +14,7 @@ install:
 	install -Dm644 doc/* "$(INSTALLDIR)/share/doc/dmenu-tools"
 
 uninstall:
-	rm $(INSTALLDIR)/bin/dmenu_{edit,menu,mpc,netcfg,run_recent}
+	rm $(INSTALLDIR)/bin/dmenu_{edit,menu,mpc,netcfg,run_recent,raise}
 	rm -rf "$(INSTALLDIR)/share/doc/dmenu-tools"
 	rm -rf "$(INSTALLDIR)/share/licenses/dmenu-tools"
 
