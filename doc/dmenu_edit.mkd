@@ -12,5 +12,4 @@ Use `dmenu` to open and edit a file from a given list.
 
         $ LOCAL="/tmp/edit.txt" dmenu_edit
 
-2. Confirm the environment variables `$TERMINAL` and `$EDITOR` are set (can be
-   defined in `dmenu.conf`)
+2. Confirm the environment variables `$TERMINAL` and `$EDITOR` are set
