@@ -5,7 +5,6 @@ all: install
 
 install:
 	install -Dm644 license.mkd "$(INSTALLDIR)/share/licenses/dmenu-tools/dmenu-tools.txt"
-	install -Dm644 example/dmenu.conf "$(INSTALLDIR)/share/doc/dmenu-tools/dmenu.conf"
 
 	install -d "$(INSTALLDIR)/bin"
 	install -Dm755 src/* "$(INSTALLDIR)/bin"
