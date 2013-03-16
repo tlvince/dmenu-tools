@@ -1,8 +1,8 @@
 $(function() {
-    $.getJSON("https://api.github.com/repos/tlvince/dmenu-tools/readme", function(data) {
-    var readme = data.content.replace(/\n/g, '');
+  $.getJSON("https://api.github.com/repos/tlvince/dmenu-tools/readme?callback=?", function(response) {
+    var readme = response.data.content.replace(/\n/g, '');
     readme = window.atob(readme);
     var html = new Markdown.Converter().makeHtml(readme);
-    $('#main_content').replaceWith(html);
+    $('#main_content p').replaceWith(html);
   });
 });
