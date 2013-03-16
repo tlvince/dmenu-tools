@@ -2,10 +2,7 @@
 # A recursive dmenu menu.
 # Copyright 2010-2013 Tom Vincent <http://tlvince.com/contact/>
 
-CACHE="${CACHE:-${XDG_CACHE_HOME:-$HOME/.cache}/dmenu_run}"
-[ -f "$CACHE" ] || { CACHE="$HOME/.dmenu_cache" && [ -f "$CACHE" ] || exit 1; }
-
 prefix="dmenu_"
-cmd="$(grep "$prefix" "$CACHE" | egrep -v "_menu|_path" | \
+cmd="$(dmenu_path | grep "$prefix" | egrep -v "_menu|_path" | \
        sed "s/$prefix//" | dmenu "$@")"
 [ "$cmd" ] && "${SHELL:-/bin/sh}" -c "${prefix}$cmd &" &

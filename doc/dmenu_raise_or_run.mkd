@@ -5,11 +5,3 @@ Raise a command's window if it exists, otherwise run it.
 ## Dependencies
 
 * `wmctrl`
-*
-## Usage
-
-Assumes `dmenu_path` has been called at least once (to create cache file).
-
-An alternative cache file can be passed at runtime:
-
-    $ CACHE="/tmp/my.cache" dmenu_raise_or_run
