@@ -1,9 +1,0 @@
-#!/bin/sh
-# Switch netcfg network profiles.
-# Copyright 2010-2013 Tom Vincent <http://tlvince.com/contact/>
-
-cmd="$(find /etc/network.d -maxdepth 1 -type f -printf "%f\n" | \
-          dmenu "$@")"
-
-[ "$cmd" ] && "${SHELL:-/bin/sh}" -c "$TERMINAL -e sh -c \
-  \"sudo netcfg -a && sudo netcfg \"$cmd\"\" &" &
