@@ -1,7 +1,0 @@
-# dmenu_netcfg
-
-Switch `netcfg` network profiles.
-
-## Usage
-
-1. Confirm the `$TERMINAL` environment variable is set
