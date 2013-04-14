@@ -2,5 +2,5 @@
 # Switch netctl network profiles.
 # Copyright 2013 Tom Vincent <http://tlvince.com/contact>
 
-cmd="$(netctl list | cut -c 3- | dmenu "$@")"
-[ "$cmd" ] && sudo netctl switch-to "$cmd" &
+profile="$(netctl list | cut -c 3- | dmenu "$@")"
+[ "$profile" ] && sudo netctl switch-to "$profile" &
