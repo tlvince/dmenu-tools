@@ -18,8 +18,12 @@ This project adopts the following guidelines:
     * Ensure POSIX compatibility
     * Use the supplied [.editorconfig][] settings
     * KISS: Keep It Simple Stupid
-* Write a brief usage doc
 * Write a short (50 chars or less) commit summary and a detailed body
+
+### New scripts
+
+* Write a brief usage doc
+* Update the `makefile` uninstall target
 
 [.editorconfig]: https://github.com/tlvince/dmenu-tools/blob/master/.editorconfig
 [philosophy]: http://suckless.org/philosophy
