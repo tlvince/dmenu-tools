@@ -14,7 +14,7 @@ See `doc` for script-specific usage and dependencies.
 
 ## Authors
 
-Copyright 2009-2013 Tom Vincent <http://tlvince.com/contact/>
+Copyright 2009-2014 Tom Vincent <http://tlvince.com/contact>
 
 ## License
 
