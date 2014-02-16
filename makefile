@@ -4,7 +4,7 @@ INSTALLDIR?=$(DESTDIR)$(PREFIX)
 all: install
 
 install:
-	install -Dm644 license.mkd "$(INSTALLDIR)/share/licenses/dmenu-tools/dmenu-tools.txt"
+	install -Dm644 license.md "$(INSTALLDIR)/share/licenses/dmenu-tools/dmenu-tools.txt"
 
 	install -d "$(INSTALLDIR)/bin"
 	install -Dm755 src/* "$(INSTALLDIR)/bin"
